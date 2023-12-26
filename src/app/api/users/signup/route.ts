@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
         const reqBody = await request.json()
         const { username, email, password } = reqBody
 
-        console.log(reqBody)
+        console.log("thisa", reqBody)
 
         const user = await User.findOne({ email })
         if (user) {
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
         console.log(savedUser)
 
-        return NextResponse.json({message:"User created successfully ", success:true, savedUser} )
+        return NextResponse.json({ message: "User created successfully ", success: true, savedUser })
 
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 })

@@ -6,7 +6,7 @@ import jwt from 'jsonwebtoken'
 
 connect()
 
-export default async function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
     try {
         const reqBody = await req.json()
         const { email, password } = reqBody
@@ -33,6 +33,7 @@ export default async function POST(req: NextRequest) {
         return response;
 
     } catch (error: any) {
+        console.log("error found while login")
         return NextResponse.json({ error: error.message }, { status: 500 })
     }
 }
